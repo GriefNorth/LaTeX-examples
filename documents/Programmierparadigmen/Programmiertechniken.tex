@@ -1,8 +1,9 @@
+%!TEX root = Programmierparadigmen.tex
 \chapter{Programmiertechniken}
 \section{Rekursion}
 \index{Rekursion|(}
 
-\begin{definition}[rekursive Funktion]\xindex{Funktion!rekursive}
+\begin{definition}[rekursive Funktion]\xindex{Funktion!rekursive}%
     Eine Funktion $f: X \rightarrow X$ heißt rekursiv definiert,
     wenn in der Definition der Funktion die Funktion selbst wieder
     steht.
@@ -38,15 +39,15 @@
     \end{bspenum}
 \end{beispiel}
 
-Ein Problem von rekursiven Funktionen in Computerprogrammen ist der 
-Speicherbedarf. Für jeden rekursiven Aufruf müssen alle Umgebungsvariablen
+Ein Problem von rekursiven Funktionen in Computerprogrammen ist der
+Speicherbedarf. Für jeden rekursiven Aufruf müssen alle lokalen Variablen
 der aufrufenden Funktion (\enquote{stack frame}) gespeichert bleiben,
 bis der rekursive Aufruf beendet ist. Im Fall der Fibonacci-Funktion
 sieht ist der Call-Stack in \cref{fig:fib-callstack} abgebildet.
 
 \begin{figure}[htp]
     \centering
-    \includegraphics*[width=0.5\linewidth, keepaspectratio]{figures/fib-callstack.png} 
+    \includegraphics*[width=0.5\linewidth, keepaspectratio]{figures/fib-callstack.png}
     \caption{Call-Stack der Fibonacci-Funktion}
     \label{fig:fib-callstack}
 \end{figure}
@@ -107,10 +108,23 @@ Auf Englisch heißen endrekursive Funktionen \textit{tail recursive}.
     \end{bspenum}
 \end{beispiel}
 
+Wenn eine rekursive Funktion nicht terminiert oder wenn
+
 \index{Rekursion|)}
 \section{Backtracking}
 \index{Backtracking|(}
+Unter \textit{Backtracking} versteht man eine Programmiertechnik, die
+(eventuell implizit) auf einem Suchbaum arbeitet und mittels Tiefensuche versucht
+eine Lösung zu finden.
 
+\begin{beispiel}[Backtracking]
+    Probleme, bei deren (vollständigen) Lösung Backtracking verwendet wird, sind:
+    \begin{bspenum}
+        \item Damenproblem
+        \item Springerproblem
+        \item Rucksackproblem
+    \end{bspenum}
+\end{beispiel}
 \index{Backtracking|)}
 
 \section{Funktionen höherer Ordnung}
@@ -121,13 +135,14 @@ Bekannte Beispiele sind:
           \texttt{map} wendet \texttt{function} auf jedes einzelne
           Element aus \texttt{list} an.
     \item \texttt{filter(function, list)}\xindex{filter}\\
-          \texttt{filter} gibt eine Liste aus Elementen zurück, für 
+          \texttt{filter} gibt eine Liste aus Elementen zurück, für
           die \texttt{function} mit \texttt{true} evaluiert.
     \item \texttt{reduce(function, list)}\xindex{reduce}\\
           \texttt{function} ist für zwei Elemente aus \texttt{list}
           definiert und gibt ein Element des gleichen Typs zurück.
           Nun steckt \texttt{reduce} zuerst zwei Elemente aus \texttt{list}
           in \texttt{function}, merkt sich dann das Ergebnis und nimmt
-          so lange weitere Elemente aus \texttt{list}, bis jedes 
-          Element genommen wurde.
+          so lange weitere Elemente aus \texttt{list}, bis jedes
+          Element genommen wurde.\\
+          Bei \texttt{reduce} ist die Assoziativität wichtig (vgl. \cpageref{bsp:foldl-und-foldr})
 \end{itemize}
